@@ -23,7 +23,15 @@ Please find the screenshots attached of the kitchensink starter app below.
 
 **WEB VIEW**
 
+<img width="1279" alt="Screenshot 2024-02-12 at 12 59 11 PM" src="https://github.com/gluestack/kitchensink-flutter/assets/94161015/aba96a42-d6f9-4de4-b241-8c84b676750d">
+
+<img width="1279" alt="Screenshot 2024-02-12 at 12 59 25 PM" src="https://github.com/gluestack/kitchensink-flutter/assets/94161015/d6d04c89-2dfc-4510-8950-24e70effbef0">
+
 **MOBILE APP VIEW**
+
+<img width="352" alt="Screenshot 2024-02-12 at 1 00 58 PM" src="https://github.com/gluestack/kitchensink-flutter/assets/94161015/fc44bcf9-f7cf-401e-a848-49b1b6d9e34d">
+
+<img width="353" alt="Screenshot 2024-02-12 at 1 01 18 PM" src="https://github.com/gluestack/kitchensink-flutter/assets/94161015/67330d68-afd5-452d-9d86-60006ca37c65">
 
 ## 🚀 Getting Started
 
