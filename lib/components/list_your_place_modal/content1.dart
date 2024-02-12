@@ -21,155 +21,168 @@ class _ListYourPlaceModalContent1State
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        GSVStack(
-          space: GSVstackSpaces.$xs,
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const GSText(bold: true, size: GSSizes.$sm, text: "I want to..."),
-            GSHStack(
-              space: GSHstackSpaces.$md,
-              children: [
-                GSButton(
-                  size: GSButtonSizes.$xs,
-                  action: isSellSelected
-                      ? GSButtonActions.primary
-                      : GSButtonActions.secondary,
-                  variant: GSButtonVariants.outline,
-                  style: GSStyle(borderRadius: $GSRadii.full),
-                  child: const GSButtonText(text: "Sell"),
-                  onPressed: () {
-                    setState(() {
-                      isSellSelected = true;
-                    });
-                  },
-                ),
-                GSButton(
-                  size: GSButtonSizes.$xs,
-                  action: !isSellSelected
-                      ? GSButtonActions.primary
-                      : GSButtonActions.secondary,
-                  variant: GSButtonVariants.outline,
-                  style: GSStyle(borderRadius: $GSRadii.full),
-                  child: const GSButtonText(text: "Rent/Lease"),
-                  onPressed: () {
-                    setState(() {
-                      isSellSelected = false;
-                    });
-                  },
-                ),
-              ],
-            ),
-          ],
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: GSVStack(
+            space: GSVstackSpaces.$xs,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const GSText(bold: true, size: GSSizes.$sm, text: "I want to..."),
+              GSHStack(
+                space: GSHstackSpaces.$md,
+                children: [
+                  GSButton(
+                    size: GSButtonSizes.$xs,
+                    action: isSellSelected
+                        ? GSButtonActions.primary
+                        : GSButtonActions.secondary,
+                    variant: GSButtonVariants.outline,
+                    style: GSStyle(borderRadius: $GSRadii.full),
+                    child: const GSButtonText(text: "Sell"),
+                    onPressed: () {
+                      setState(() {
+                        isSellSelected = true;
+                      });
+                    },
+                  ),
+                  GSButton(
+                    size: GSButtonSizes.$xs,
+                    action: !isSellSelected
+                        ? GSButtonActions.primary
+                        : GSButtonActions.secondary,
+                    variant: GSButtonVariants.outline,
+                    style: GSStyle(borderRadius: $GSRadii.full),
+                    child: const GSButtonText(text: "Rent/Lease"),
+                    onPressed: () {
+                      setState(() {
+                        isSellSelected = false;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-        GSVStack(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const GSText(bold: true, size: GSSizes.$sm, text: "Property is..."),
-            GSHStack(
-              space: GSHstackSpaces.$md,
-              children: [
-                GSRadio<String>(
-                  size: GSRadioSizes.$lg,
-                  style: GSStyle(
-                      margin: EdgeInsets.only(
-                    right: $GSSpace.$3,
-                  )),
-                  icon: const GSRadioIcon<String>(),
-                  groupValue: '1',
-                  value: '1',
-                  label: const GSRadioText<String>(text: "Residential"),
-                  onChanged: (value) {
-                    setState(() {
-                      // currentSelectedOption = value!;
-                    });
-                  },
-                ),
-                GSRadio<String>(
-                  size: GSRadioSizes.$lg,
-                  style: GSStyle(
-                      margin: EdgeInsets.only(
-                          right: $GSSpace.$3, left: $GSSpace.$1)),
-                  icon: const GSRadioIcon<String>(),
-                  groupValue: '1',
-                  value: '1',
-                  label: const GSRadioText<String>(text: "Commercial"),
-                  onChanged: (value) {
-                    setState(() {
-                      // currentSelectedOption = value!;
-                    });
-                  },
-                ),
-              ],
-            ),
-          ],
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: GSVStack(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const GSText(
+                  bold: true, size: GSSizes.$sm, text: "Property is..."),
+              GSHStack(
+                space: GSHstackSpaces.$md,
+                children: [
+                  GSRadio<String>(
+                    size: GSRadioSizes.$lg,
+                    style: GSStyle(
+                        margin: EdgeInsets.only(
+                      right: $GSSpace.$3,
+                    )),
+                    icon: const GSRadioIcon<String>(),
+                    groupValue: '1',
+                    value: '1',
+                    label: const GSRadioText<String>(text: "Residential"),
+                    onChanged: (value) {
+                      setState(() {
+                        // currentSelectedOption = value!;
+                      });
+                    },
+                  ),
+                  GSRadio<String>(
+                    size: GSRadioSizes.$lg,
+                    style: GSStyle(
+                        margin: EdgeInsets.only(
+                            right: $GSSpace.$3, left: $GSSpace.$1)),
+                    icon: const GSRadioIcon<String>(),
+                    groupValue: '1',
+                    value: '1',
+                    label: const GSRadioText<String>(text: "Commercial"),
+                    onChanged: (value) {
+                      setState(() {
+                        // currentSelectedOption = value!;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-        GSHStack(
-          space: GSHstackSpaces.$md,
-          children: [
-            GSButton(
-              size: GSButtonSizes.$xs,
-              action: selectedPropertyType[0]
-                  ? GSButtonActions.primary
-                  : GSButtonActions.secondary,
-              variant: GSButtonVariants.outline,
-              style: GSStyle(borderRadius: $GSRadii.full),
-              child: const GSButtonText(text: 'flat/apartment'),
-              onPressed: () {
-                setState(() {
-                  selectedPropertyType[0] = !selectedPropertyType[0];
-                });
-              },
-            ),
-            GSButton(
-              size: GSButtonSizes.$xs,
-              action: selectedPropertyType[1]
-                  ? GSButtonActions.primary
-                  : GSButtonActions.secondary,
-              variant: GSButtonVariants.outline,
-              style: GSStyle(borderRadius: $GSRadii.full),
-              child: const GSButtonText(text: 'independent house/villa'),
-              onPressed: () {
-                setState(() {
-                  selectedPropertyType[1] = !selectedPropertyType[1];
-                });
-              },
-            ),
-          ],
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: GSHStack(
+            space: GSHstackSpaces.$md,
+            children: [
+              GSButton(
+                size: GSButtonSizes.$xs,
+                action: selectedPropertyType[0]
+                    ? GSButtonActions.primary
+                    : GSButtonActions.secondary,
+                variant: GSButtonVariants.outline,
+                style: GSStyle(borderRadius: $GSRadii.full),
+                child: const GSButtonText(text: 'flat/apartment'),
+                onPressed: () {
+                  setState(() {
+                    selectedPropertyType[0] = !selectedPropertyType[0];
+                  });
+                },
+              ),
+              GSButton(
+                size: GSButtonSizes.$xs,
+                action: selectedPropertyType[1]
+                    ? GSButtonActions.primary
+                    : GSButtonActions.secondary,
+                variant: GSButtonVariants.outline,
+                style: GSStyle(borderRadius: $GSRadii.full),
+                child: const GSButtonText(text: 'independent house/villa'),
+                onPressed: () {
+                  setState(() {
+                    selectedPropertyType[1] = !selectedPropertyType[1];
+                  });
+                },
+              ),
+            ],
+          ),
         ),
-        GSHStack(
-          space: GSHstackSpaces.$md,
-          children: [
-            GSButton(
-              size: GSButtonSizes.$xs,
-              action: selectedPropertyType[2]
-                  ? GSButtonActions.primary
-                  : GSButtonActions.secondary,
-              variant: GSButtonVariants.outline,
-              style: GSStyle(borderRadius: $GSRadii.full),
-              child:
-                  const GSButtonText(text: 'independent floor/building floor'),
-              onPressed: () {
-                setState(() {
-                  selectedPropertyType[2] = !selectedPropertyType[2];
-                });
-              },
-            ),
-            GSButton(
-              size: GSButtonSizes.$xs,
-              action: selectedPropertyType[3]
-                  ? GSButtonActions.primary
-                  : GSButtonActions.secondary,
-              variant: GSButtonVariants.outline,
-              style: GSStyle(borderRadius: $GSRadii.full),
-              child: const GSButtonText(text: 'Plot/Land'),
-              onPressed: () {
-                setState(() {
-                  selectedPropertyType[3] = !selectedPropertyType[3];
-                });
-              },
-            ),
-          ],
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: GSHStack(
+            space: GSHstackSpaces.$md,
+            children: [
+              GSButton(
+                size: GSButtonSizes.$xs,
+                action: selectedPropertyType[2]
+                    ? GSButtonActions.primary
+                    : GSButtonActions.secondary,
+                variant: GSButtonVariants.outline,
+                style: GSStyle(borderRadius: $GSRadii.full),
+                child: const GSButtonText(
+                    text: 'independent floor/building floor'),
+                onPressed: () {
+                  setState(() {
+                    selectedPropertyType[2] = !selectedPropertyType[2];
+                  });
+                },
+              ),
+              GSButton(
+                size: GSButtonSizes.$xs,
+                action: selectedPropertyType[3]
+                    ? GSButtonActions.primary
+                    : GSButtonActions.secondary,
+                variant: GSButtonVariants.outline,
+                style: GSStyle(borderRadius: $GSRadii.full),
+                child: const GSButtonText(text: 'Plot/Land'),
+                onPressed: () {
+                  setState(() {
+                    selectedPropertyType[3] = !selectedPropertyType[3];
+                  });
+                },
+              ),
+            ],
+          ),
         ),
         GSBox(
           style: GSStyle(width: double.maxFinite),
