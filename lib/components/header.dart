@@ -64,18 +64,14 @@ class KSHeader extends StatelessWidget {
                       ),
                       child: GSPressable(
                         hitSlop: 2,
-                        style: GSStyle(
-                            splashColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onHover: GSStyle(color: Colors.transparent)),
                         child: Transform.rotate(
                           angle: -0.7,
                           child: GSIcon(
                             size: GSIconSizes.$xl,
-                            icon:
-                                Theme.of(context).brightness == Brightness.light
-                                    ? Icons.nightlight_rounded
-                                    : Icons.light_mode,
+                            icon: GSTheme.of(context).brightness ==
+                                    Brightness.light
+                                ? Icons.nightlight_rounded
+                                : Icons.light_mode,
                             style: GSStyle(
                                 color: $GSColors.backgroundLight700,
                                 dark: GSStyle(

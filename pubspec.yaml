@@ -10,7 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
   fluttertoast: ^8.2.4
-  gluestack_ui: ^0.0.1-alpha.5
+  gluestack_ui:
+    git:
+      url: https://github.com/gluestack/gluestack-ui-flutter.git
+      ref: fix/dev-core-merge
 
 dev_dependencies:
   flutter_test:

@@ -53,14 +53,12 @@ class KSMainComponent extends StatelessWidget {
       children: [
         //r1
         KSRespRowCol(
+          constraintWidth: 420,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const GSHeading(size: GSSizes.$xl, text: 'New this week'),
-            GSBox(
-              style: GSStyle(
-                padding: const EdgeInsets.only(top: 9),
-              ),
+            Align(
+              alignment: Alignment.centerRight,
               child: GSButton(
                 variant: GSButtonVariants.outline,
                 action: GSButtonActions.secondary,
