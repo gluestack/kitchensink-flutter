@@ -75,6 +75,7 @@ class KitchenSink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = GSTheme.of(context);
+    // done so that material 13 design does not enforce it's DS over FAB and Alert Box.
     return Theme(
       data: ThemeData(useMaterial3: false),
       child: Scaffold(
