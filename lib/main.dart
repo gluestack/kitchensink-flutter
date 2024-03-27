@@ -75,181 +75,184 @@ class KitchenSink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = GSTheme.of(context);
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      bottomNavigationBar: GSBox(
-        style: GSStyle(
-          md: GSStyle(isVisible: false),
-          height: 85,
-        ),
-        child: GSBox(
+    return Theme(
+      data: ThemeData(useMaterial3: false),
+      child: Scaffold(
+        backgroundColor: theme.scaffoldBackgroundColor,
+        bottomNavigationBar: GSBox(
           style: GSStyle(
-            bg: Colors.white,
-            dark: GSStyle(bg: const Color(0xFF171717)),
-            padding: EdgeInsets.only(
-                left: getResponsiveValue(
-                      context: context,
-                      xsValue: 12,
-                      smValue: 24,
-                    ) ??
-                    4,
-                right: getResponsiveValue(
-                      context: context,
-                      xsValue: 12,
-                      smValue: 24,
-                    ) ??
-                    4,
-                top: 20,
-                bottom: 10),
+            md: GSStyle(isVisible: false),
+            height: 85,
           ),
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: GSBox(
+            style: GSStyle(
+              bg: Colors.white,
+              dark: GSStyle(bg: const Color(0xFF171717)),
+              padding: EdgeInsets.only(
+                  left: getResponsiveValue(
+                        context: context,
+                        xsValue: 12,
+                        smValue: 24,
+                      ) ??
+                      4,
+                  right: getResponsiveValue(
+                        context: context,
+                        xsValue: 12,
+                        smValue: 24,
+                      ) ??
+                      4,
+                  top: 20,
+                  bottom: 10),
+            ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                BottomBarTile(
+                  icon: Icons.home_outlined,
+                  title: 'Home',
+                ),
+                BottomBarTile(
+                  icon: Icons.filter_list_outlined,
+                  title: 'Filter',
+                ),
+                BottomBarTile(
+                  icon: Icons.add,
+                  title: 'Listing',
+                ),
+                BottomBarTile(
+                  icon: Icons.chat_bubble_outline_rounded,
+                  title: 'Inbox',
+                ),
+                BottomBarTile(
+                  icon: Icons.person_outline_rounded,
+                  title: 'Profile',
+                ),
+              ],
+            ),
+          ),
+        ),
+        floatingActionButton: GSBox(
+          style: GSStyle(md: GSStyle(isVisible: false)),
+          child: FloatingActionButton(
+            onPressed: toggleTheme,
+            backgroundColor: const Color(0xffE11D48),
+            child: Transform.rotate(
+                angle: -7,
+                child: Icon(
+                  GSTheme.of(context).brightness == Brightness.light
+                      ? Icons.nightlight_rounded
+                      : Icons.light_mode,
+                  color: Colors.white,
+                )),
+          ),
+        ),
+        body: SafeArea(
+          child: Stack(
             children: [
-              BottomBarTile(
-                icon: Icons.home_outlined,
-                title: 'Home',
+              GSBox(
+                style: GSStyle(md: GSStyle(isVisible: false)),
+                child: GSVStack(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const KSBanner(),
+                    GSBox(
+                      style: GSStyle(
+                        padding: EdgeInsets.all(getResponsiveValue(
+                              context: context,
+                              xsValue: 6,
+                              smValue: 16,
+                            ) ??
+                            0),
+                      ),
+                      child: GSInput(
+                        hoverColor: const Color(0xffE11D48),
+                        suffixIcon: GSBox(
+                          style: GSStyle(
+                            padding: const EdgeInsets.all(5.5),
+                          ),
+                          child: ClipOval(
+                            child: GSBox(
+                              style: GSStyle(
+                                padding: EdgeInsets.all(4),
+                                color: const Color(0xffE11D48),
+                              ),
+                              child: GSIcon(
+                                style: GSStyle(color: $GSColors.white),
+                                icon: Icons.search,
+                              ),
+                            ),
+                          ),
+                        ),
+                        variant: GSInputVariants.outline,
+                        style: GSStyle(
+                            borderRadius: 99,
+                            onFocus: GSStyle(
+                                borderColor: const Color(0xffE11D48),
+                                borderWidth: 2)),
+                        hintText: 'Anywhere • Any week • Add guests',
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
+                            color: Colors.grey.shade600),
+                      ),
+                    ),
+                    const Expanded(
+                      child: SingleChildScrollView(
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        child: KSMainComponent(),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              BottomBarTile(
-                icon: Icons.filter_list_outlined,
-                title: 'Filter',
-              ),
-              BottomBarTile(
-                icon: Icons.add,
-                title: 'Listing',
-              ),
-              BottomBarTile(
-                icon: Icons.chat_bubble_outline_rounded,
-                title: 'Inbox',
-              ),
-              BottomBarTile(
-                icon: Icons.person_outline_rounded,
-                title: 'Profile',
+              // big screen widget
+              GSBox(
+                style: GSStyle(isVisible: false, md: GSStyle(isVisible: true)),
+                child: GSVStack(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const KSBanner(),
+                    KSHeader(
+                      themeCallback: toggleTheme,
+                    ),
+                    Expanded(
+                      child: GSBox(
+                        style: GSStyle(
+                          padding:
+                              const EdgeInsets.only(top: 30, left: 21, right: 21),
+                        ),
+                        child: GSHStack(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GSBox(
+                              style: GSStyle(
+                                width: 200,
+                              ),
+                              child: GSBox(
+                                style: GSStyle(
+                                  padding: const EdgeInsets.only(right: 30),
+                                ),
+                                child: const SingleChildScrollView(
+                                  child: KSSideBar(),
+                                ),
+                              ),
+                            ),
+                            const Expanded(
+                              child: SingleChildScrollView(
+                                child: KSMainComponent(),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-        ),
-      ),
-      floatingActionButton: GSBox(
-        style: GSStyle(md: GSStyle(isVisible: false)),
-        child: FloatingActionButton(
-          onPressed: toggleTheme,
-          backgroundColor: const Color(0xffE11D48),
-          child: Transform.rotate(
-              angle: -7,
-              child: Icon(
-                GSTheme.of(context).brightness == Brightness.light
-                    ? Icons.nightlight_rounded
-                    : Icons.light_mode,
-                color: Colors.white,
-              )),
-        ),
-      ),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            GSBox(
-              style: GSStyle(md: GSStyle(isVisible: false)),
-              child: GSVStack(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const KSBanner(),
-                  GSBox(
-                    style: GSStyle(
-                      padding: EdgeInsets.all(getResponsiveValue(
-                            context: context,
-                            xsValue: 6,
-                            smValue: 16,
-                          ) ??
-                          0),
-                    ),
-                    child: GSInput(
-                      hoverColor: const Color(0xffE11D48),
-                      suffixIcon: GSBox(
-                        style: GSStyle(
-                          padding: const EdgeInsets.all(5.5),
-                        ),
-                        child: ClipOval(
-                          child: GSBox(
-                            style: GSStyle(
-                              padding: EdgeInsets.all(4),
-                              color: const Color(0xffE11D48),
-                            ),
-                            child: GSIcon(
-                              style: GSStyle(color: $GSColors.white),
-                              icon: Icons.search,
-                            ),
-                          ),
-                        ),
-                      ),
-                      variant: GSInputVariants.outline,
-                      style: GSStyle(
-                          borderRadius: 99,
-                          onFocus: GSStyle(
-                              borderColor: const Color(0xffE11D48),
-                              borderWidth: 2)),
-                      hintText: 'Anywhere • Any week • Add guests',
-                      hintStyle: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 14,
-                          color: Colors.grey.shade600),
-                    ),
-                  ),
-                  const Expanded(
-                    child: SingleChildScrollView(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: KSMainComponent(),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // big screen widget
-            GSBox(
-              style: GSStyle(isVisible: false, md: GSStyle(isVisible: true)),
-              child: GSVStack(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const KSBanner(),
-                  KSHeader(
-                    themeCallback: toggleTheme,
-                  ),
-                  Expanded(
-                    child: GSBox(
-                      style: GSStyle(
-                        padding:
-                            const EdgeInsets.only(top: 30, left: 21, right: 21),
-                      ),
-                      child: GSHStack(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GSBox(
-                            style: GSStyle(
-                              width: 200,
-                            ),
-                            child: GSBox(
-                              style: GSStyle(
-                                padding: const EdgeInsets.only(right: 30),
-                              ),
-                              child: const SingleChildScrollView(
-                                child: KSSideBar(),
-                              ),
-                            ),
-                          ),
-                          const Expanded(
-                            child: SingleChildScrollView(
-                              child: KSMainComponent(),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
         ),
       ),
     );

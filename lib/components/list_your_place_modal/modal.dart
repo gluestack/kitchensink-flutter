@@ -31,41 +31,38 @@ class _ListYourPlaceModalState extends State<ListYourPlaceModal> {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData(useMaterial3: false),
-      child: AlertDialog(
-        backgroundColor: GSTheme.of(context).brightness == Brightness.dark
-            ? const Color(0xFF262626)
-            : null,
-        title: GSHStack(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const GSHeading(size: GSSizes.$sm, text: "List your place"),
-            GSPressable(
-                onPress: () {
-                  Navigator.of(context).pop();
-                },
-                child: const GSIcon(icon: Icons.close)),
-          ],
-        ),
-        content: _currentModalContent == 0
-            ? GSBox(
-                style: GSStyle(width: 500),
-                child: ListYourPlaceModalContent1(
-                    nextFunction: _moveToNextModalContent))
-            : _currentModalContent == 1
-                ? GSBox(
-                    style: GSStyle(width: 500),
-                    child: ListYourPlaceModalContent2(
-                      nextFunction: _moveToNextModalContent,
-                      backFunction: _moveBackToPreviousModalContent,
-                    ),
-                  )
-                : GSBox(
-                    style: GSStyle(width: 500),
-                    child: const ListYourPlaceModalContent3(),
-                  ),
+    return AlertDialog(
+      backgroundColor: GSTheme.of(context).brightness == Brightness.dark
+          ? const Color(0xFF262626)
+          : null,
+      title: GSHStack(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const GSHeading(size: GSSizes.$sm, text: "List your place"),
+          GSPressable(
+              onPress: () {
+                Navigator.of(context).pop();
+              },
+              child: const GSIcon(icon: Icons.close)),
+        ],
       ),
+      content: _currentModalContent == 0
+          ? GSBox(
+              style: GSStyle(width: 500),
+              child: ListYourPlaceModalContent1(
+                  nextFunction: _moveToNextModalContent))
+          : _currentModalContent == 1
+              ? GSBox(
+                  style: GSStyle(width: 500),
+                  child: ListYourPlaceModalContent2(
+                    nextFunction: _moveToNextModalContent,
+                    backFunction: _moveBackToPreviousModalContent,
+                  ),
+                )
+              : GSBox(
+                  style: GSStyle(width: 500),
+                  child: const ListYourPlaceModalContent3(),
+                ),
     );
   }
 }
