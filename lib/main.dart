@@ -87,14 +87,14 @@ class KitchenSink extends StatelessWidget {
             bg: Colors.white,
             dark: GSStyle(bg: const Color(0xFF171717)),
             padding: EdgeInsets.only(
-                left: getRespValue(
-                      buildContext: context,
+                left: getResponsiveValue(
+                      context: context,
                       xsValue: 12,
                       smValue: 24,
                     ) ??
                     4,
-                right: getRespValue(
-                      buildContext: context,
+                right: getResponsiveValue(
+                      context: context,
                       xsValue: 12,
                       smValue: 24,
                     ) ??
@@ -156,8 +156,8 @@ class KitchenSink extends StatelessWidget {
                   const KSBanner(),
                   GSBox(
                     style: GSStyle(
-                      padding: EdgeInsets.all(getRespValue(
-                            buildContext: context,
+                      padding: EdgeInsets.all(getResponsiveValue(
+                            context: context,
                             xsValue: 6,
                             smValue: 16,
                           ) ??
@@ -172,12 +172,11 @@ class KitchenSink extends StatelessWidget {
                         child: ClipOval(
                           child: GSBox(
                             style: GSStyle(
+                              padding: EdgeInsets.all(4),
                               color: const Color(0xffE11D48),
                             ),
                             child: GSIcon(
-                              style: GSStyle(
-                                  color: Colors.grey.shade600,
-                                  dark: GSStyle(color: Colors.white)),
+                              style: GSStyle(color: $GSColors.white),
                               icon: Icons.search,
                             ),
                           ),
