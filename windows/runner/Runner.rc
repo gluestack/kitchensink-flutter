@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "kitchensink-flutter" "\0"
+            VALUE "FileDescription", "kitchensink_flutter" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "kitchensink-flutter" "\0"
+            VALUE "InternalName", "kitchensink_flutter" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "kitchensink-flutter.exe" "\0"
-            VALUE "ProductName", "kitchensink-flutter" "\0"
+            VALUE "OriginalFilename", "kitchensink_flutter.exe" "\0"
+            VALUE "ProductName", "kitchensink_flutter" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
